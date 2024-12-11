@@ -1,15 +1,16 @@
 from django.urls import path
 from .views import (
+    ApiRootView,
     SalesRepresentativeList, SalesRepresentativeDetail,
     CustomerList, CustomerDetail,
     ContactList, ContactDetail,
     LocationList, LocationDetail,
     OpportunityList, OpportunityDetail,
-    ClientList, ClientDetail
+    ClientList, ClientDetail,
 )
 
 urlpatterns = [
-    path('', SalesRepresentativeList.as_view(), name='salesrep-list-create'),  # Directly map to this endpoint
+    path('', ApiRootView.as_view(), name='api-root'),
     path('salesrepresentatives/', SalesRepresentativeList.as_view(), name='salesrep-list-create'),
     path('salesrepresentatives/<int:pk>/', SalesRepresentativeDetail.as_view(), name='salesrep-detail'),
     path('customers/', CustomerList.as_view(), name='customer-list-create'),
