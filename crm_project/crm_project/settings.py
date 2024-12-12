@@ -40,10 +40,22 @@ INSTALLED_APPS = [
     'crm',
     'rest_framework',
     'corsheaders',
+    'rest_framework_simplejwt',
+    'phonenumber_field',
+    
     
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Use JWT for authentication
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+         'rest_framework.permissions.IsAuthenticated',  # By default, require authentication for all views
+    ),
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Add this line at the top of the middleware list
@@ -128,6 +140,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-AUTH_USER_MODEL = 'crm.User'
